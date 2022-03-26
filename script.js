@@ -29,6 +29,7 @@ function operate(operator,a,b) {
 const numbers = document.querySelectorAll('.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero');
 const display = document.querySelector('.display');
 console.log(numbers);
+let displayNum;
 
 numbers.forEach(number => {
     number.addEventListener('click', () => {
@@ -65,7 +66,6 @@ numbers.forEach(number => {
                 display.textContent += 0;
                 break;
         }
-        let displayNum = display.textContent;
-        return displayNum;
+        return displayNum = display.textContent;
     })
 })

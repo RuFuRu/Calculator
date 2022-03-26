@@ -25,3 +25,6 @@ function operate(operator,a,b) {
             return "Error";
     }
 }
+
+const numbers = document.querySelectorAll('.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero');
+console.log(numbers);

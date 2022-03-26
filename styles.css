@@ -3,12 +3,16 @@
 }
 
 body {
+    height: 98vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 98vh;
 }
 
+.display {
+    margin-bottom: 1rem;
+    border: 1px dotted black;
+}
 .grid-container {
     display: grid;
     grid-template-columns: repeat(4,1fr);

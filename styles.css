@@ -1,0 +1,7 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+.grid-container {
+    grid-template-columns: repeat(16,1fr);
+}

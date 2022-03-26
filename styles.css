@@ -26,6 +26,7 @@ body {
     grid-auto-rows: minmax(auto , 3rem);
     max-width: 900px;
     border: 2px solid black;
+    cursor: pointer;
 }
 
 .grid-container > div {

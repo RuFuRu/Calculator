@@ -14,7 +14,7 @@ body {
 
 .display {
     margin-bottom: 1rem;
-    border: 2px dotted rgb(37, 37, 37);
+    /*border: 2px dotted rgb(37, 37, 37);*/
     padding: 0.5rem;
     border-radius: 3%;
     font-size: 1.2rem;

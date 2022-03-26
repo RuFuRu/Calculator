@@ -32,6 +32,7 @@ console.log(numbers);
 
 numbers.forEach(number => {
     number.addEventListener('click', () => {
+        display.setAttribute('style', 'border: 2px dotted rgb(37, 37, 37);')
         switch(true) {
             case number.classList.contains('one'):
                 display.textContent += 1;

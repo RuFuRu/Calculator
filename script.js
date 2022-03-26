@@ -11,3 +11,17 @@ function divide(a,b) {
     return a / b;
 }
 
+function operate(operator,a,b) {
+    switch(true) {
+        case operator === '+':
+            return add(a,b);
+        case operator === '-':
+            return subtract(a,b);
+        case operator === '*':
+            return multiply(a,b);
+        case operator === '/':
+            return divide(a,b);
+        default:
+            return "Error";
+    }
+}

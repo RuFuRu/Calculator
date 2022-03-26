@@ -31,7 +31,6 @@ const display = document.querySelector('.display');
 console.log(numbers);
 
 numbers.forEach(number => {
-    let displayNum = display.textContent;
     number.addEventListener('click', () => {
         display.setAttribute('style', 'border: 2px dotted rgb(37, 37, 37);')
         switch(true) {
@@ -66,6 +65,7 @@ numbers.forEach(number => {
                 display.textContent += 0;
                 break;
         }
+        let displayNum = display.textContent;
         return displayNum;
     })
 })

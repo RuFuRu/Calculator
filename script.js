@@ -26,10 +26,13 @@ function operate(operator,a,b) {
     }
 }
 
-const numbers = document.querySelectorAll('.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero');
+const numbers = document.querySelectorAll('.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .division, .multiplication, .subtraction, .addition, .equals');
 const display = document.querySelector('.display');
 console.log(numbers);
 let displayNum;
+let operator;
+let a = 0;
+let b = 0;
 
 numbers.forEach(number => {
     number.addEventListener('click', () => {
@@ -65,7 +68,18 @@ numbers.forEach(number => {
             case number.classList.contains('zero'):
                 display.textContent += 0;
                 break;
+            case number.classList.contains('addition'):
+                a += parseInt(displayNum);
+                display.textContent = '';
+                console.log(a);
+                operator = "+";
+                break;
+            case number.classList.contains('equals'):
+                b = parseInt(displayNum);
+                display.textContent = operate(operator,a,b);
+                break;
+
         }
-        return displayNum = display.textContent;
+        displayNum = display.textContent;
     })
 })

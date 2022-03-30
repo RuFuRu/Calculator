@@ -97,9 +97,12 @@ operations.forEach(operation => {
                     a.push(parseInt(displayNum));
                     display.textContent = '';
                     display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
-                    break;
                 }
-                display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
+                else if(a.length >= 2) {
+                    a.push(parseInt(displayNum));
+                    display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
+                }
+                break;
         }
     })
 })

@@ -91,6 +91,15 @@ operations.forEach(operation => {
                     console.log(a);
                     console.log(result);
                 }
+                break;
+            case operation.classList.contains('equals'):
+                if(a.length < 2) {
+                    a.push(parseInt(displayNum));
+                    display.textContent = '';
+                    display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
+                    break;
+                }
+                display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
         }
     })
 })

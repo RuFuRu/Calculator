@@ -1,5 +1,6 @@
 function add(a,b) {
-    return a + b;
+    let c = a + b;
+    return c;
 }
 function subtract(a,b) {
     return a - b;
@@ -26,13 +27,16 @@ function operate(operator,a,b) {
     }
 }
 
-const numbers = document.querySelectorAll('.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .division, .multiplication, .subtraction, .addition, .equals');
+const numbers = document.querySelectorAll('.number');
 const display = document.querySelector('.display');
+const operations = document.querySelectorAll('.operation');
+console.log(operations);
 console.log(numbers);
 let displayNum;
 let operator;
-let a = 0;
-let b = 0;
+let a = [];
+let result = 0;
+let clicked = 0;
 
 numbers.forEach(number => {
     number.addEventListener('click', () => {
@@ -68,18 +72,25 @@ numbers.forEach(number => {
             case number.classList.contains('zero'):
                 display.textContent += 0;
                 break;
-            case number.classList.contains('addition'):
-                a += parseInt(displayNum);
-                display.textContent = '';
-                console.log(a);
-                operator = "+";
-                break;
-            case number.classList.contains('equals'):
-                b = parseInt(displayNum);
-                display.textContent = operate(operator,a,b);
-                break;
-
         }
-        displayNum = display.textContent;
+        return displayNum = display.textContent;
+    })
+});
+
+operations.forEach(operation => {
+    operation.addEventListener('click', () => {
+        switch(true) {
+            case operation.classList.contains('addition'):
+                display.textContent = '';
+                a.push(parseInt(displayNum));
+                operator = '+';
+                clicked++;
+                if(a.length >= 2) {
+                    result = operate('+',a[a.length - 2],a[a.length - 1]);
+                    a[a.length - 1] = result;
+                    console.log(a);
+                    console.log(result);
+                }
+        }
     })
 })

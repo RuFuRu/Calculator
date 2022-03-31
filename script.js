@@ -38,7 +38,9 @@ let displayNum;
 let operator;
 let a = [];
 let result = 0;
+let result2 = 0;
 let clicked = 0;
+let operClickCount = 0;
 
 numbers.forEach(number => {
     number.addEventListener('click', () => {
@@ -90,29 +92,42 @@ operations.forEach(operation => {
     operation.addEventListener('click', () => {
         switch(true) {
             case operation.classList.contains('addition'):
-                display.textContent = '';
                 operator = '+';
+                operClickCount++;
                 if(clicked === 0) {
                     a.push(parseInt(displayNum));
+
+                    if(a.length >= 2) {
+                        result = operate('+',a[a.length - 2],a[a.length - 1]);
+                        a[a.length - 1] = result;
+                        console.log(a);
+                        console.log(result);
+                    }
                 }
-                if(a.length >= 2) {
-                    result = operate('+',a[a.length - 2],a[a.length - 1]);
-                    a[a.length - 1] = result;
-                    console.log(a);
-                    console.log(result);
+                else if(clicked > 0) {
+                    a.push(parseInt(display.textContent));
+                    if(operClickCount > 1) {
+                        result = operate('+',a[a.length - 2],a[a.length - 1]);
+                        a[a.length - 1] = result;
+                    }
                 }
+                display.textContent = '';
                 break;
             case operation.classList.contains('equals'):
                 if(a.length < 2) {
-                    a.push(parseInt(display.textContent));
+                    a.push(parseInt(displayNum));
                     display.textContent = '';
                     display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
+                    result2 = display.textContent;
                     clicked++;
+                    operClickCount = 0;
                 }
                 else if(a.length >= 2) {
-                    a.push(parseInt(display.textContent));
+                    a.push(parseInt(displayNum));
                     display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
+                    result2 = display.textContent;
                     clicked++;
+                    operClickCount = 0;
                 }
                 break;
         }

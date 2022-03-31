@@ -94,24 +94,7 @@ operations.forEach(operation => {
             case operation.classList.contains('addition'):
                 operator = '+';
                 operClickCount++;
-                if(clicked === 0) {
-                    a.push(parseInt(displayNum));
-
-                    if(a.length >= 2) {
-                        result = operate('+',a[a.length - 2],a[a.length - 1]);
-                        a[a.length - 1] = result;
-                        console.log(a);
-                        console.log(result);
-                    }
-                }
-                else if(clicked > 0) {
-                    a.push(parseInt(display.textContent));
-                    if(operClickCount > 1) {
-                        result = operate('+',a[a.length - 2],a[a.length - 1]);
-                        a[a.length - 1] = result;
-                    }
-                }
-                display.textContent = '';
+                evaluate();
                 break;
             case operation.classList.contains('equals'):
                 if(a.length < 2) {
@@ -133,3 +116,24 @@ operations.forEach(operation => {
         }
     })
 })
+
+function evaluate() {
+    if(clicked === 0) {
+        a.push(parseInt(displayNum));
+
+        if(a.length >= 2) {
+            result = operate(operator,a[a.length - 2],a[a.length - 1]);
+            a[a.length - 1] = result;
+            console.log(a);
+            console.log(result);
+        }
+    }
+    else if(clicked > 0) {
+        a.push(parseInt(display.textContent));
+        if(operClickCount > 1) {
+            result = operate(operator,a[a.length - 2],a[a.length - 1]);
+            a[a.length - 1] = result;
+        }
+    }
+    display.textContent = '';
+}

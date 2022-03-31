@@ -30,6 +30,8 @@ function operate(operator,a,b) {
 const numbers = document.querySelectorAll('.number');
 const display = document.querySelector('.display');
 const operations = document.querySelectorAll('.operation');
+const clear = document.querySelector('.clear');
+
 console.log(operations);
 console.log(numbers);
 let displayNum;
@@ -76,6 +78,13 @@ numbers.forEach(number => {
         return displayNum = display.textContent;
     })
 });
+
+clear.addEventListener('click', () => {
+    a = [];
+    display.textContent = null;
+    displayNum = null;
+    console.log(a,display.textContent,displayNum);
+})
 
 operations.forEach(operation => {
     operation.addEventListener('click', () => {

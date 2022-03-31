@@ -91,9 +91,10 @@ operations.forEach(operation => {
         switch(true) {
             case operation.classList.contains('addition'):
                 display.textContent = '';
-                a.push(parseInt(displayNum));
                 operator = '+';
-                clicked++;
+                if(clicked === 0) {
+                    a.push(parseInt(displayNum));
+                }
                 if(a.length >= 2) {
                     result = operate('+',a[a.length - 2],a[a.length - 1]);
                     a[a.length - 1] = result;
@@ -103,13 +104,15 @@ operations.forEach(operation => {
                 break;
             case operation.classList.contains('equals'):
                 if(a.length < 2) {
-                    a.push(parseInt(displayNum));
+                    a.push(parseInt(display.textContent));
                     display.textContent = '';
                     display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
+                    clicked++;
                 }
                 else if(a.length >= 2) {
-                    a.push(parseInt(displayNum));
+                    a.push(parseInt(display.textContent));
                     display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
+                    clicked++;
                 }
                 break;
         }

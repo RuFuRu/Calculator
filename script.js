@@ -4,6 +4,7 @@ const operations = document.querySelectorAll('.operation');
 const clear = document.querySelector('.clear');
 const backspace = document.querySelector('.backspace');
 const decimal = document.querySelector('.decimal');
+let linebreak;
 
 console.log(operations[0]);
 console.log(numbers);
@@ -128,8 +129,10 @@ function evaluate() {
 }
 
 function seriously() {
+    linebreak = document.createElement('br');
     if(display.textContent === 'Infinity') {
-        display.textContent = 'Did you seriously try to divide by 0 ?';
+        display.textContent = 'Overflow or attempt at dividing by 0';
+        
     }
 }
 

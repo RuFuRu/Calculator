@@ -50,12 +50,7 @@ numbers.forEach(number => {
     })
 });
 
-clear.addEventListener('click', () => {
-    a = [];
-    display.textContent = null;
-    displayNum = null;
-    console.log(a,display.textContent,displayNum);
-})
+clear.addEventListener('click',clearDisplay);
 
 operations.forEach(operation => {
     operation.addEventListener('click', () => {
@@ -105,4 +100,11 @@ function evaluate() {
         }
     }
     display.textContent = '';
+}
+
+function clearDisplay() {
+    a = [];
+    display.textContent = null;
+    displayNum = null;
+    console.log(a,display.textContent,displayNum);
 }

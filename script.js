@@ -48,6 +48,9 @@ operations.forEach(operation => {
                 operatorList.push(operator);
                 evaluate();
                 break;
+            case operation.classList.contains('percentage'):
+                display.textContent = display.textContent * 0.01;
+                break;
             case operation.classList.contains('equals'):
                 equals();
                 break;

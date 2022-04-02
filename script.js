@@ -44,39 +44,8 @@ let operClickCount = 0;
 
 numbers.forEach(number => {
     number.addEventListener('click', () => {
-        display.setAttribute('style', 'border: 2px dotted rgb(37, 37, 37);')
-        switch(true) {
-            case number.classList.contains('one'):
-                display.textContent += 1;
-                break;
-            case number.classList.contains('two'):
-                display.textContent += 2;
-                break;
-            case number.classList.contains('three'):
-                display.textContent += 3;
-                break;
-            case number.classList.contains('four'):
-                display.textContent += 4;
-                break;
-            case number.classList.contains('five'):
-                display.textContent += 5;
-                break;
-            case number.classList.contains('six'):
-                display.textContent += 6;
-                break;
-            case number.classList.contains('seven'):
-                display.textContent += 7;
-                break;
-            case number.classList.contains('eight'):
-                display.textContent += 8;
-                break;
-            case number.classList.contains('nine'):
-                display.textContent += 9;
-                break;
-            case number.classList.contains('zero'):
-                display.textContent += 0;
-                break;
-        }
+        display.setAttribute('style', 'border: 2px dotted rgb(37, 37, 37);');
+        display.textContent += number.textContent;
         return displayNum = display.textContent;
     })
 });

@@ -1,32 +1,3 @@
-function add(a,b) {
-    let c = a + b;
-    return c;
-}
-function subtract(a,b) {
-    return a - b;
-}
-function multiply(a,b) {
-    return a * b;
-}
-function divide(a,b) {
-    return a / b;
-}
-
-function operate(operator,a,b) {
-    switch(true) {
-        case operator === '+':
-            return add(a,b);
-        case operator === '-':
-            return subtract(a,b);
-        case operator === '*':
-            return multiply(a,b);
-        case operator === '/':
-            return divide(a,b);
-        // default:
-        //     return "Error";
-    }
-}
-
 const numbers = document.querySelectorAll('.number');
 const display = document.querySelector('.display');
 const operations = document.querySelectorAll('.operation');
@@ -82,6 +53,34 @@ operations.forEach(operation => {
     })
 })
 
+function add(a,b) {
+    let c = a + b;
+    return c;
+}
+function subtract(a,b) {
+    return a - b;
+}
+function multiply(a,b) {
+    return a * b;
+}
+function divide(a,b) {
+    return a / b;
+}
+
+function operate(operator,a,b) {
+    switch(true) {
+        case operator === '+':
+            return add(a,b);
+        case operator === '-':
+            return subtract(a,b);
+        case operator === '*':
+            return multiply(a,b);
+        case operator === '/':
+            return divide(a,b);
+        default:
+            return "Error";
+    }
+}
 
 function evaluate() {
     operClickCount++;

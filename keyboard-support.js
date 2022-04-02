@@ -25,4 +25,13 @@ document.addEventListener('keydown',(e) => {
         display.textContent = display.textContent * 0.01;
     }
 
+
+    if(e.key === 'C' || e.key === 'c') {
+        clearDisplay();
+    }
+
+    if(e.key === 'Backspace') {
+        correct();
+    }
+
 })

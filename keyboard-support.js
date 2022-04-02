@@ -20,4 +20,9 @@ document.addEventListener('keydown',(e) => {
         equals();
     }
 
+
+    if(e.key === '%') {
+        display.textContent = display.textContent * 0.01;
+    }
+
 })

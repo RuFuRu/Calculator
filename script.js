@@ -3,6 +3,7 @@ const display = document.querySelector('.display');
 const operations = document.querySelectorAll('.operation');
 const clear = document.querySelector('.clear');
 const backspace = document.querySelector('.backspace');
+const decimal = document.querySelector('.decimal');
 
 console.log(operations[0]);
 console.log(numbers);
@@ -23,6 +24,7 @@ numbers.forEach(number => {
 
 clear.addEventListener('click',clearDisplay);
 backspace.addEventListener('click',correct);
+decimal.addEventListener('click', addDecimalPoint);
 
 
 operations.forEach(operation => {
@@ -89,6 +91,7 @@ function operate(operator,a,b) {
 
 function evaluate() {
     operClickCount++;
+    decimal.setAttribute('style','pointer-events: auto');
 
     if(operClickCount < 2) {
         a1 = parseFloat(display.textContent);
@@ -122,6 +125,7 @@ function seriously() {
 }
 
 function equals() {
+    decimal.setAttribute('style','pointer-events: auto');
     if(operClickCount === 1) {
         b1 = parseFloat(display.textContent);
         console.log(b1);
@@ -138,6 +142,7 @@ function equals() {
 }
 
 function clearDisplay() {
+    decimal.setAttribute('style','pointer-events: auto');
     a = [];
     display.textContent = null;
     displayNum = null;
@@ -146,4 +151,9 @@ function clearDisplay() {
 
 function correct() {
     display.textContent = display.textContent.slice(0, -1);
+}
+
+function addDecimalPoint() {
+    display.textContent += '.';
+    decimal.setAttribute('style','pointer-events: none');
 }

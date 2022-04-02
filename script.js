@@ -53,6 +53,11 @@ operations.forEach(operation => {
             case operation.classList.contains('percentage'):
                 display.textContent = display.textContent * 0.01;
                 break;
+            case operation.classList.contains('power'):
+                operator = '^';
+                operatorList.push(operator);
+                evaluate();
+                break;
             case operation.classList.contains('equals'):
                 equals();
                 break;
@@ -73,6 +78,9 @@ function multiply(a,b) {
 function divide(a,b) {
     return a / b;
 }
+function pow(a,b) {
+    return Math.pow(a,b);
+}
 
 function operate(operator,a,b) {
     switch(true) {
@@ -84,6 +92,8 @@ function operate(operator,a,b) {
             return multiply(a,b);
         case operator === '/':
             return divide(a,b);
+        case operator === '^':
+            return pow(a,b);
         default:
             return "Error";
     }

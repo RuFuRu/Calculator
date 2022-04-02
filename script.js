@@ -70,6 +70,11 @@ operations.forEach(operation => {
                 operatorList.push(operator);
                 evaluate();
                 break;
+            case operation.classList.contains('multi'):
+                operator = '*';
+                operatorList.push(operator);
+                evaluate();
+                break;
             case operation.classList.contains('equals'):
                 equals();
                 break;

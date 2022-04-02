@@ -61,12 +61,12 @@ operations.forEach(operation => {
             case operation.classList.contains('addition'):
                 operator = '+';
                 operatorList.push(operator);
-                evaluateAdd();
+                evaluate();
                 break;
             case operation.classList.contains('subtraction'):
                 operator = '-';
                 operatorList.push(operator);
-                evaluateSub();
+                evaluate();
                 break;
             case operation.classList.contains('equals'):
                 equals();
@@ -76,68 +76,30 @@ operations.forEach(operation => {
 })
 
 
-
-function evaluateAdd() {
+function evaluate() {
     operClickCount++;
+
     if(operClickCount < 2) {
         a1 = parseInt(display.textContent);
     }
 
     if(operClickCount >= 2) {
-        console.log(operatorList);
 
-        if(operatorList[operatorList.length - 1] = "+") {
+        if(operatorList[operatorList.length - 2] !== operator) {
+            b1 = parseInt(display.textContent);
+            a.push(operate(operatorList[operatorList.length - 2],a1,b1));
+            a1 = a[counter++];
+            console.log(a);
+        }
+        
+        console.log(operatorList);
+        if(operatorList[operatorList.length - 2] === operator) {
             b1 = parseInt(display.textContent);
             a.push(operate(operator,a1,b1));
             a1 = a[counter++];
         }
-
         console.log(a);
     }
-    display.textContent = '';
-}
-
-function evaluateSub() {
-    operClickCount++;
-
-    switch(true) {
-        case operatorList[operatorList.length - 2] !== '-':
-            a.push(operate(operatorList[operatorList.length - 2],a[0],a[1]));
-            console.log(a);
-            display.textContent = '';
-            break;
-        case operClickCount < 2:
-            a.push(parseInt(display.textContent));
-            console.log(operatorList);
-            console.log(a);
-            break;
-        case operClickCount >= 2:
-            a.push(parseInt(display.textContent));
-            a.push(operate(operator,a[a.length - 2],a[a.length - 1]));
-            console.log(a);
-            a.splice(0,2);
-            break;
-    }
-    
-    /*if(operatorList[operatorList.length - 2] !== '-') {
-        //a.push(parseInt(display.textContent));
-        a.push(operate(operatorList[operatorList.length - 2],a[0],a[1]));
-        console.log(a);
-        display.textContent = '';
-    }
-    
-    if(operClickCount < 2) {
-        a.push(parseInt(display.textContent));
-        console.log(operatorList);
-        console.log(a);
-    }
-    
-    if(operClickCount >= 2) {
-        a.push(parseInt(display.textContent));
-        a.push(operate(operator,a[a.length - 2],a[a.length - 1]));
-        console.log(a);
-        a.splice(0,2);
-    }*/
 
     display.textContent = '';
 }

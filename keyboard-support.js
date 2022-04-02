@@ -18,6 +18,12 @@ document.addEventListener('keyup',(e) => {
         }
     })
 
+    if(e.key === 'd' || e.key === 'D') {
+        operator = '/';
+        operatorList.push(operator);
+        evaluate();
+    }
+
     
     if(e.key === '=' || e.key === 'Enter') {
         equals();

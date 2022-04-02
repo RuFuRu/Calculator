@@ -91,13 +91,13 @@ function evaluate() {
     operClickCount++;
 
     if(operClickCount < 2) {
-        a1 = parseInt(display.textContent);
+        a1 = parseFloat(display.textContent);
     }
 
     if(operClickCount >= 2) {
 
         if(operatorList[operatorList.length - 2] !== operator) {
-            b1 = parseInt(display.textContent);
+            b1 = parseFloat(display.textContent);
             a.push(operate(operatorList[operatorList.length - 2],a1,b1));
             a1 = a[counter++];
             console.log(a);
@@ -105,7 +105,7 @@ function evaluate() {
         
         console.log(operatorList);
         if(operatorList[operatorList.length - 2] === operator) {
-            b1 = parseInt(display.textContent);
+            b1 = parseFloat(display.textContent);
             a.push(operate(operator,a1,b1));
             a1 = a[counter++];
         }
@@ -123,14 +123,14 @@ function seriously() {
 
 function equals() {
     if(operClickCount === 1) {
-        b1 = parseInt(display.textContent);
+        b1 = parseFloat(display.textContent);
         console.log(b1);
         display.textContent = operate(operator,a1,b1);
         seriously();
         operClickCount = 0;
     }
     else if(operClickCount > 1) {
-        b1 = parseInt(display.textContent);
+        b1 = parseFloat(display.textContent);
         display.textContent = operate(operator,a1,b1);
         seriously();
         operClickCount = 0;

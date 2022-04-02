@@ -32,15 +32,13 @@ const display = document.querySelector('.display');
 const operations = document.querySelectorAll('.operation');
 const clear = document.querySelector('.clear');
 
-console.log(operations);
+console.log(operations[0]);
 console.log(numbers);
-let displayNum;
 let operator;
 let operatorList = [];
 let a = [];
 let a1 = 0;
 let b1 = 0;
-let c1 = 0;
 let counter = 0;
 let operClickCount = 0;
 
@@ -48,7 +46,6 @@ numbers.forEach(number => {
     number.addEventListener('click', () => {
         display.setAttribute('style', 'border: 2px dotted rgb(37, 37, 37);');
         display.textContent += number.textContent;
-        return displayNum = display.textContent;
     })
 });
 
@@ -65,6 +62,11 @@ operations.forEach(operation => {
                 break;
             case operation.classList.contains('subtraction'):
                 operator = '-';
+                operatorList.push(operator);
+                evaluate();
+                break;
+            case operation.classList.contains('division'):
+                operator = '/';
                 operatorList.push(operator);
                 evaluate();
                 break;
@@ -104,16 +106,24 @@ function evaluate() {
     display.textContent = '';
 }
 
+function seriously() {
+    if(display.textContent === 'Infinity') {
+        display.textContent = 'Did you seriously try to divide by 0 ?';
+    }
+}
+
 function equals() {
     if(operClickCount === 1) {
         b1 = parseInt(display.textContent);
         console.log(b1);
         display.textContent = operate(operator,a1,b1);
+        seriously();
         operClickCount = 0;
     }
     else if(operClickCount > 1) {
         b1 = parseInt(display.textContent);
         display.textContent = operate(operator,a1,b1);
+        seriously();
         operClickCount = 0;
     }
 }

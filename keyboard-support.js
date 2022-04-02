@@ -1,4 +1,4 @@
-document.addEventListener('keydown',(e) => {
+document.addEventListener('keyup',(e) => {
     display.setAttribute('style', 'border: 2px dotted rgb(37, 37, 37);');
 
     

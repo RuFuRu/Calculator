@@ -52,54 +52,55 @@ numbers.forEach(number => {
 
 clear.addEventListener('click',clearDisplay);
 
+
 operations.forEach(operation => {
     operation.addEventListener('click', () => {
         switch(true) {
             case operation.classList.contains('addition'):
                 operator = '+';
-                operClickCount++;
                 evaluate();
                 break;
             case operation.classList.contains('equals'):
-                if(a.length < 2) {
-                    a.push(parseInt(displayNum));
-                    display.textContent = '';
-                    display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
-                    result2 = display.textContent;
-                    clicked++;
-                    operClickCount = 0;
-                }
-                else if(a.length >= 2) {
-                    a.push(parseInt(displayNum));
-                    display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
-                    result2 = display.textContent;
-                    clicked++;
-                    operClickCount = 0;
-                }
+                equals();
                 break;
         }
     })
 })
 
-function evaluate() {
-    if(clicked === 0) {
-        a.push(parseInt(displayNum));
 
-        if(a.length >= 2) {
-            result = operate(operator,a[a.length - 2],a[a.length - 1]);
-            a[a.length - 1] = result;
-            console.log(a);
-            console.log(result);
-        }
-    }
-    else if(clicked > 0) {
+
+function evaluate() {
+    operClickCount++;
+    if(operClickCount < 2) {
         a.push(parseInt(display.textContent));
-        if(operClickCount > 1) {
-            result = operate(operator,a[a.length - 2],a[a.length - 1]);
-            a[a.length - 1] = result;
-        }
+        console.log(a); 
+    }
+
+    if(operClickCount >= 2) {
+        a.push(parseInt(display.textContent));
+        a.push(operate(operator,a[a.length - 2],a[a.length - 1]));
+        a.splice(0,2);
+        console.log(a);
     }
     display.textContent = '';
+}
+
+function equals() {
+    if(a.length < 2) {
+        a.push(parseInt(displayNum));
+        display.textContent = '';
+        display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
+        result2 = display.textContent;
+        clicked++;
+        operClickCount = 0;
+    }
+    else if(a.length >= 2) {
+        a.push(parseInt(displayNum));
+        display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
+        result2 = display.textContent;
+        clicked++;
+        operClickCount = 0;
+    }
 }
 
 function clearDisplay() {

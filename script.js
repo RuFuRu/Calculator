@@ -22,8 +22,8 @@ function operate(operator,a,b) {
             return multiply(a,b);
         case operator === '/':
             return divide(a,b);
-        default:
-            return "Error";
+        // default:
+        //     return "Error";
     }
 }
 
@@ -36,10 +36,12 @@ console.log(operations);
 console.log(numbers);
 let displayNum;
 let operator;
+let operatorList = [];
 let a = [];
-let result = 0;
-let result2 = 0;
-let clicked = 0;
+let a1 = 0;
+let b1 = 0;
+let c1 = 0;
+let counter = 0;
 let operClickCount = 0;
 
 numbers.forEach(number => {
@@ -58,7 +60,13 @@ operations.forEach(operation => {
         switch(true) {
             case operation.classList.contains('addition'):
                 operator = '+';
-                evaluate();
+                operatorList.push(operator);
+                evaluateAdd();
+                break;
+            case operation.classList.contains('subtraction'):
+                operator = '-';
+                operatorList.push(operator);
+                evaluateSub();
                 break;
             case operation.classList.contains('equals'):
                 equals();
@@ -69,36 +77,81 @@ operations.forEach(operation => {
 
 
 
-function evaluate() {
+function evaluateAdd() {
     operClickCount++;
     if(operClickCount < 2) {
-        a.push(parseInt(display.textContent));
-        console.log(a); 
+        a1 = parseInt(display.textContent);
     }
 
     if(operClickCount >= 2) {
-        a.push(parseInt(display.textContent));
-        a.push(operate(operator,a[a.length - 2],a[a.length - 1]));
-        a.splice(0,2);
+        console.log(operatorList);
+
+        if(operatorList[operatorList.length - 1] = "+") {
+            b1 = parseInt(display.textContent);
+            a.push(operate(operator,a1,b1));
+            a1 = a[counter++];
+        }
+
         console.log(a);
     }
     display.textContent = '';
 }
 
-function equals() {
-    if(a.length < 2) {
-        a.push(parseInt(displayNum));
+function evaluateSub() {
+    operClickCount++;
+
+    switch(true) {
+        case operatorList[operatorList.length - 2] !== '-':
+            a.push(operate(operatorList[operatorList.length - 2],a[0],a[1]));
+            console.log(a);
+            display.textContent = '';
+            break;
+        case operClickCount < 2:
+            a.push(parseInt(display.textContent));
+            console.log(operatorList);
+            console.log(a);
+            break;
+        case operClickCount >= 2:
+            a.push(parseInt(display.textContent));
+            a.push(operate(operator,a[a.length - 2],a[a.length - 1]));
+            console.log(a);
+            a.splice(0,2);
+            break;
+    }
+    
+    /*if(operatorList[operatorList.length - 2] !== '-') {
+        //a.push(parseInt(display.textContent));
+        a.push(operate(operatorList[operatorList.length - 2],a[0],a[1]));
+        console.log(a);
         display.textContent = '';
-        display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
-        result2 = display.textContent;
-        clicked++;
+    }
+    
+    if(operClickCount < 2) {
+        a.push(parseInt(display.textContent));
+        console.log(operatorList);
+        console.log(a);
+    }
+    
+    if(operClickCount >= 2) {
+        a.push(parseInt(display.textContent));
+        a.push(operate(operator,a[a.length - 2],a[a.length - 1]));
+        console.log(a);
+        a.splice(0,2);
+    }*/
+
+    display.textContent = '';
+}
+
+function equals() {
+    if(operClickCount === 1) {
+        b1 = parseInt(display.textContent);
+        console.log(b1);
+        display.textContent = operate(operator,a1,b1);
         operClickCount = 0;
     }
-    else if(a.length >= 2) {
-        a.push(parseInt(displayNum));
-        display.textContent = operate(operator,a[a.length - 2],a[a.length - 1]);
-        result2 = display.textContent;
-        clicked++;
+    else if(operClickCount > 1) {
+        b1 = parseInt(display.textContent);
+        display.textContent = operate(operator,a1,b1);
         operClickCount = 0;
     }
 }

@@ -2,6 +2,7 @@ const numbers = document.querySelectorAll('.number');
 const display = document.querySelector('.display');
 const operations = document.querySelectorAll('.operation');
 const clear = document.querySelector('.clear');
+const backspace = document.querySelector('.backspace');
 
 console.log(operations[0]);
 console.log(numbers);
@@ -21,6 +22,7 @@ numbers.forEach(number => {
 });
 
 clear.addEventListener('click',clearDisplay);
+backspace.addEventListener('click',correct);
 
 
 operations.forEach(operation => {
@@ -137,4 +139,8 @@ function clearDisplay() {
     display.textContent = null;
     displayNum = null;
     console.log(a,display.textContent,displayNum);
+}
+
+function correct() {
+    display.textContent = display.textContent.slice(0, -1);
 }

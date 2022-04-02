@@ -101,7 +101,6 @@ function operate(operator,a,b) {
 
 function evaluate() {
     operClickCount++;
-    decimal.setAttribute('style','pointer-events: auto');
 
     if(operClickCount < 2) {
         a1 = parseFloat(display.textContent);
@@ -135,7 +134,6 @@ function seriously() {
 }
 
 function equals() {
-    decimal.setAttribute('style','pointer-events: auto');
     if(operClickCount === 1) {
         b1 = parseFloat(display.textContent);
         console.log(b1);
@@ -152,7 +150,6 @@ function equals() {
 }
 
 function clearDisplay() {
-    decimal.setAttribute('style','pointer-events: auto');
     a = [];
     display.textContent = null;
     displayNum = null;
@@ -164,6 +161,11 @@ function correct() {
 }
 
 function addDecimalPoint() {
+    
+    if(display.textContent.includes('.')) {
+        return;
+    }
+    
     display.textContent += '.';
-    decimal.setAttribute('style','pointer-events: none');
+
 }

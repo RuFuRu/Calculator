@@ -34,4 +34,8 @@ document.addEventListener('keydown',(e) => {
         correct();
     }
 
-})
+    if(e.key === '.') {
+        addDecimalPoint();
+    }
+
+});

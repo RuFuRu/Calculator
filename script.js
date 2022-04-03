@@ -19,6 +19,8 @@ let operClickCount = 0;
 numbers.forEach(number => {
     number.addEventListener('click', () => {
         display.textContent += number.textContent;
+        number.setAttribute('style','background-color: rgb(201, 197, 60) !important');
+        setTimeout(() => {number.setAttribute('style','background-color: rgb(177, 167, 154) !important')},100);
     })
 });
 
@@ -29,6 +31,8 @@ decimal.addEventListener('click', addDecimalPoint);
 
 operations.forEach(operation => {
     operation.addEventListener('click', () => {
+        operation.setAttribute('style','background-color: rgb(25, 102, 140) !important');
+        setTimeout(() => {operation.setAttribute('style','background-color: hsl(0, 1%, 16%); !important')},100);
         switch(true) {
             case operation.classList.contains('addition'):
                 operator = '+';
@@ -136,6 +140,7 @@ function seriously() {
 }
 
 function equals() {
+
     if(operClickCount === 1) {
         b1 = parseFloat(display.textContent);
         console.log(b1);
@@ -152,6 +157,8 @@ function equals() {
 }
 
 function clearDisplay() {
+    clear.setAttribute('style','background-color: rgb(25, 102, 140) !important');
+    setTimeout(() => {clear.setAttribute('style','background-color: hsl(60, 98%, 20%); !important')},100);
     a = [];
     display.textContent = null;
     displayNum = null;
@@ -163,6 +170,8 @@ function correct() {
 }
 
 function addDecimalPoint() {
+    decimal.setAttribute('style','background-color: rgb(25, 102, 140) !important');
+    setTimeout(() => {decimal.setAttribute('style','background-color: hsl(0, 1%, 16%); !important')},100);
     
     if(display.textContent.includes('.')) {
         return;

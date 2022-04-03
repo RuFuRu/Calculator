@@ -13,19 +13,23 @@ body {
 }
 
 .container {
-    width: 20%;
-    height: 80%;
+    width: 360px;
+    height: 600px;
+    font-size: 1.6rem;
+    color: hsl(0, 8%, 93%);
+    background-color: hsl(0, 0%, 11%);
 }
 
 .display {
-    margin-bottom: 5rem;
-    /*border: 2px dotted rgb(37, 37, 37);*/
+    margin-top: 6rem;
+    margin-bottom: 4rem;
     width: 17rem;
-    height: 5vh;
-    border-radius: 3%;
+    height: 7vh;
+    border-radius: 6%;
     font-size: 1.4rem;
     margin-left: auto;
     margin-right: auto;
+    background-color: hsl(120, 84%, 17%);
 }
 
 .grid-container {
@@ -81,4 +85,9 @@ body {
 .addition {
     grid-column: 4/5;
     grid-row: 4;
+}
+
+.backspace {
+    border-radius: 0 !important;
+    border: 0 !important;
 }

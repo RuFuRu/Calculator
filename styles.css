@@ -124,8 +124,19 @@ body {
 footer {
     display: flex;
     align-items: center;
-    font-size: 1.6rem;
+    justify-content: center;
+    font-size: 1.8rem;
     width: 100%;
     height: 5vh;
-    background-color: hsl(0, 12%, 92%);
+    /*background-color: hsl(0, 12%, 92%);*/
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    margin-left: 0.5rem;
+    height: 1.8rem;
 }

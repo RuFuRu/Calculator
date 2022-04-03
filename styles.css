@@ -140,3 +140,16 @@ img {
     margin-left: 0.5rem;
     height: 1.8rem;
 }
+
+
+@media (max-height: 700px) {
+    .container {
+        height: 500px !important;
+    }
+
+    .display {
+        margin-bottom: 2rem;
+        margin-top: 4rem;
+        height: 3.5rem;
+    }
+}
